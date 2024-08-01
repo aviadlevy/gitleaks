@@ -57,7 +57,8 @@ func getRules(cfg config.Config) []Rules {
 	var rules []Rules
 	for _, rule := range cfg.OrderedRules() {
 		rules = append(rules, Rules{
-			ID: rule.RuleID,
+			ID:               rule.RuleID,
+			Name:             rule.Description,
 			LastModifiedDate: rule.Metadata["lastModifiedDate"],
 		})
 	}
@@ -152,6 +153,7 @@ type FullDescription struct {
 
 type Rules struct {
 	ID               string `json:"id"`
+	Name             string `json:"name"`
 	LastModifiedDate string `json:"lastModifiedDate"`
 }
 
